@@ -1,9 +1,7 @@
-<h6>Install:</h6> 
+<h5>Install:</h5> 
 
-git clone https://github.com/sakaki-chat/wa-sakaki-typescript.git
 
-cd wa-sakaki-typescript
-
+cd sakaki-wa-ts
 
 npm i --force
 
