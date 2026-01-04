@@ -1,5 +1,6 @@
 /node_modules
 /registration
 
+/src/index.js
 
-index.js
+package-lock.json

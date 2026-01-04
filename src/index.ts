@@ -32,9 +32,6 @@ const imgGroup = "https://i.ibb.co/BHHmyS46/EEWC-o2-MDVg-MEz7jm8-Fbn-3343437531.
 const imgHelp = "https://i.ibb.co/c7Y4bn1/9780b13155bf33e2ab441389a38545ac.jpg";
 
 
-
-const time: string = moment().format('LT');
-
 const qrcode = require('qrcode-terminal');
 const logger = P({
   level: 'trace',
@@ -151,29 +148,15 @@ const App = async () => {
 	  
            case 'menu':
            await sendWithTyping(sock, jid,
-        	{ image: { url: imgMenu }, caption: '> Menu\n\n/Chat\n/Group\n/Service\n/Help' }); 
+        	{ image: 
+                        { url: 
+                               imgMenu 
+                        },
+                           caption: '> Menu\n\n/Service\n/Group\n/Help' 
+                 }
+           ); 
 	   break;
 
-	   case 'chat':
-	   await sendWithTyping(sock, jid,
-        	{ image: { url: imgChat  }, caption: '> Commands Private: \n\n/Create\n/Sender' });
-           break;
-
-           /*Commands of Chat*/
-
-	   case 'create':
-           await sendWithTyping(sock, jid, 
-		 { image: { url: imgChat  }, caption: '/Sticker'} );
-	   break;
-
-           case 'sender':
-           await sendWithTyping(sock, jid,
-		   { image: { url: imgChat }, caption: '/Anonymou' });
-	   break;
-
-	   case 'anonymou':
-           await sendWithTyping(sock, jid, { image: { url: imgChat }, caption: 'loading....' });
-           break;
 
 	   case 'group':
            await sendWithTyping(sock, jid,
@@ -194,12 +177,6 @@ const App = async () => {
 	   break;	   
 
          /*Commands of Group*/
-
-
-	 case 'welcome':
-     const response = await sock.groupFetchAllParticipating()
-	 console.log(response); 
-	 break;
 
           case 'open_group':
               await sock.groupSettingUpdate(jid, 'not_announcement');
@@ -227,20 +204,7 @@ const App = async () => {
             await sendWithTyping(sock, jid, 
 		  { image: { url: imgHelp }, caption: 'System/\n/Report_Bug' });
 	    break;
-
-
-            case 'system':
-            await sendWithTyping(sock, jid,
-		  { image: { url: imgHelp }, caption: '/Sakaki\n/Ping' });		 
-            break;
-
-            case 'sakaki': 
-	    var info = `Operating System: ${os.platform()}\nCPU Architecture: ${os.arch()}\nTotal Memory: ${(os.totalmem() / (1024 * 1024 * 1024)).toFixed(2)} GB\nFree Memory: ${(os.freemem() / (1024 * 1024 * 1024)).toFixed(2)} GB\nUptime: ${os.uptime() / 60 / 60} hours`;
-            await sendWithTyping(sock, jid, 
-		{ image: 
-			{ url: imgHelp }, 
-		  caption: info });
-	    break;	    
+	    
 
            /*Colocar na session Chat*/
 	    case 's':
