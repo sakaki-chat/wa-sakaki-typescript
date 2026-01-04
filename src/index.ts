@@ -138,8 +138,16 @@ const App = async () => {
           '';
 
         const jid = msg.key.remoteJid!;
+        const isGroup = msg.key?.remoteJid?.endsWith('@g.us');
+
+                
+           
         const cmd = parseCommand(text);
+
         if (!cmd) continue;
+        if (!isGroup) {
+
+        }
 
         console.log('🟢 Comando:', cmd, '| jid:', jid);
 
